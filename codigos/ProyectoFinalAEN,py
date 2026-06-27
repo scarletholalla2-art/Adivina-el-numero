@@ -1,0 +1,63 @@
+import random
+
+# Programa: Adivina el número
+# La computadora intenta descubrir el número pensado por el usuario
+
+
+def iniciar_juego():
+
+    print("===================================")
+    print("      JUEGO: ADIVINA EL NÚMERO")
+    print("===================================")
+
+    print("\nPiensa un número del 1 al 100.")
+    input("Cuando estés listo presiona ENTER...")
+
+    minimo = 1
+    maximo = 100
+    intentos = 0
+
+    while True:
+
+        intentos += 1
+
+        numero = random.randint(minimo, maximo)
+
+        print(f"\n¿Tu número es {numero}?")
+
+        respuesta = input(
+            "Escribe: mayor / menor / correcto: "
+        ).lower()
+
+        # Si el número pensado es mayor
+        if respuesta == "mayor":
+            minimo = numero + 1
+
+        # Si el número pensado es menor
+        elif respuesta == "menor":
+            maximo = numero - 1
+
+        # Si la computadora acertó
+        elif respuesta == "correcto":
+
+            print("\n¡He adivinado tu número!")
+            print(f"Intentos realizados: {intentos}")
+
+            break
+
+        # Validación
+        else:
+            print("Respuesta inválida.")
+
+        # Evitar errores
+        if minimo > maximo:
+
+            print(
+                "\nLas respuestas parecen inconsistentes."
+            )
+
+            break
+
+
+# Inicio del programa
+iniciar_juego()
